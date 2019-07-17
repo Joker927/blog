@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('./mysql/index.js');
+var router = require('./routes/route.js');
 
 const app = express();
 
@@ -17,27 +18,26 @@ app.all('*', (req, res, next) => {
   }
 });
 
-app.use('/', express.static('static'));
+//代理静态文件
+// app.use('/', express.static('static'));
 
-app.get('/', function (req, res) {
-  res.send([{
-    user: 'joker'
-  }]);
-});
+router(app);
 
-app.get('/product', function (req, res) {
-  res.send([{
-    user: 'joker'
-  }, {
-    user: 'joker'
-  }, {
-    user: 'joker'
-  }]);
-});
+
+// app.get('/product', function (req, res) {
+//   res.send([{
+//     user: 'joker'
+//   }, {
+//     user: 'joker'
+//   }, {
+//     user: 'joker'
+//   }]);
+// });
 
 app.listen(3000, () => {
   console.log('app listen 3000');
 });
+
 // var createError = require('http-errors');
 // var express = require('express');
 // var path = require('path');
@@ -46,7 +46,7 @@ app.listen(3000, () => {
 // var mysql = require('./mysql/index.js');
 
 // var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
+
 
 // var app = express();
 
@@ -63,7 +63,7 @@ app.listen(3000, () => {
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+
 
 // // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
