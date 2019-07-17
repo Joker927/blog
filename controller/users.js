@@ -7,7 +7,9 @@ class User {
 
   }
   login(req, res, next) {
-    res.send('login is success');
+    res.send([{
+      user: 'joker'
+    }]);
   }
 }
 
