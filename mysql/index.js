@@ -9,9 +9,4 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-var sql = "SELECT * from user";
-
-connection.query(sql, function (error, results, fields) {
-    if (error) throw error;
-    console.log(results);
-});
+module.exports = connection;
