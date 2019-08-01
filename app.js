@@ -27,8 +27,7 @@ app.all('*', (req, res, next) => {
     if (req.method == "GET") {
       req.query = url.parse(req.url, true).query;
     } else if (req.method == "POST") {
-      console.log(req.headers)
-      // console.log(req.rawHeaders)
+      
     }
     next();
   }

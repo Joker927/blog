@@ -7,7 +7,7 @@ class Article {
     constructor() {
 
     }
-
+    //get方法，传入id,获取数据
     detail(req, res, next) {
         var sql = "SELECT * from user";
         mysql.query(sql, function (error, results, fields) {
@@ -17,12 +17,13 @@ class Article {
                 message: 'success',
                 data: [{
                     url: req.query,
-                    user: 'Article'
+                    user: 'Article',
+                    results: results
                 }]
             })
         });
     }
-
+    //post方法，传入id,获取数据
     details(req, res, next) {
         res.send({
             status: 200,
