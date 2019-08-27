@@ -7,6 +7,7 @@ class Article {
     constructor() {
 
     }
+
     //get方法，传入id,获取数据
     detail(req, res, next) {
         var sql = "SELECT * from user";
@@ -23,13 +24,20 @@ class Article {
             })
         });
     }
+
     //post方法，传入id,获取数据
     details(req, res, next) {
-        res.send({
-            status: 200,
-            message: 'success',
-            data: req.body
-        })
+        var sql = "SELECT * FROM `blog`.`article` WHERE `article_id` = " + req.body.id;
+        mysql.query(sql, function (error, results, fields) {
+            if (error) throw error;
+            res.send({
+                status: 200,
+                message: 'success',
+                data: [{
+                    data: results[0]
+                }]
+            })
+        });
     }
 }
 

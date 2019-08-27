@@ -7,7 +7,8 @@ class Product {
     constructor() {
 
     }
-    //post方法，传入id,获取数据
+
+    //获取所有产品列表
     list(req, res, next) {
         var sql = "SELECT * FROM `blog`.`product`";
         mysql.query(sql, function (error, results, fields) {
@@ -21,7 +22,8 @@ class Product {
             })
         });
     }
-    
+
+    //post方法，传入id,获取数据
     detail(req, res, next) {
         var sql = "SELECT * FROM `blog`.`product` WHERE `id` = " + req.body.id;
         mysql.query(sql, function (error, results, fields) {
