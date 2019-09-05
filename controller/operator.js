@@ -16,9 +16,24 @@ class Operator {
             res.send({
                 status: 200,
                 message: 'success',
-                data: [{
-                    data: results
-                }]
+                data: results
+            })
+        });
+    }
+
+    //post方法，获取首页话题列表
+    topicList(req, res, next) {
+        var sql = "SELECT * FROM `blog`.`topiclist`";
+        mysql.query(sql, function (error, results, fields) {
+            if (error) throw error;
+            results.forEach(function (val) {
+                val.ymProductList = JSON.parse(val.ymProductList)
+            });
+
+            res.send({
+                status: 200,
+                message: 'success',
+                data: results
             })
         });
     }

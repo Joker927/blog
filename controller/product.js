@@ -16,9 +16,7 @@ class Product {
             res.send({
                 status: 200,
                 message: 'success',
-                data: [{
-                    data: results
-                }]
+                data: results
             })
         });
     }
@@ -31,9 +29,7 @@ class Product {
             res.send({
                 status: 200,
                 message: 'success',
-                data: [{
-                    data: results[0]
-                }]
+                data: results[0]
             })
         });
     }
