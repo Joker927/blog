@@ -37,6 +37,23 @@ class Operator {
             })
         });
     }
+
+    //post方法，获取分类列表
+    categoryList(req, res, next) {
+        var sql = "SELECT * FROM `blog`.`category`";
+        mysql.query(sql, function (error, results, fields) {
+            if (error) throw error;
+            results.forEach(function (val) {
+                val.subCategoryList = JSON.parse(val.subCategoryList)
+            });
+
+            res.send({
+                status: 200,
+                message: 'success',
+                data: results
+            })
+        });
+    }
 }
 
 module.exports = new Operator();
